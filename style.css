@@ -124,3 +124,23 @@ p {
   opacity: 55%;
 }
 
+
+/* Warning for mobile devices */
+.warning-mobile {
+  display: none;
+  background-color: #ff0000; /* Red background for visibility */
+  color: #ffffff; /* White text */
+  text-align: center;
+  padding: 20px;
+  font-size: 18px;
+}
+
+@media only screen and (max-width: 768px) {
+  .warning-mobile {
+    display: block;
+  }
+
+  .main-container{
+    display: none; /* Hide other content on mobile devices */
+  }
+}
