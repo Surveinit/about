@@ -109,6 +109,7 @@ p {
 
 .links > li {
   transition: transform 250ms ease;
+  will-change: transform;
 
   &:hover {
     cursor: pointer;
