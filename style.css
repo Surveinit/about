@@ -6,6 +6,7 @@
   font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;
+  overflow-x: hidden;
 }
 
 /* Aligments */
@@ -17,32 +18,33 @@
 
 body {
   background-color: var(--background-color);
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 
 .main-container {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  gap: 20px;
 }
 
 .up-container {
   display: flex;
+  flex-direction: row;
   align-items: center;
-  padding-top: 30px;
+  justify-content: center;
 }
 
-.cloud-left {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-}
+/* .cloud-left { */
+/*   display: flex; */
+/*   flex-direction: column; */
+/*   justify-content: flex-end; */
+/* } */
 
-.cloud-right {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-}
+/* .cloud-right { */
+/*   display: flex; */
+/*   flex-direction: column; */
+/*   justify-content: flex-start; */
+/* } */
 
 .content {
   display: flex;
@@ -86,7 +88,7 @@ body {
 }
 
 .introduction {
-  width: 550px;
+  max-width: 550px;
   text-align: center;
 }
 
@@ -153,11 +155,67 @@ li > a {
   }
 }
 
+/* Slider */
+
+.slider {
+  --width: 80px;
+  --height: 80px;
+  --quantity: 8;
+
+  width: 100%;
+  height: var(--height);
+
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    #000,
+    transparent
+    );
+}
+
+.slider .list {
+  display: flex;
+  width: 100%;
+  min-width: calc(var(--width) * var(--quantity));
+  position: relative;
+}
+
+.slider .list .item {
+  width: var(--width);
+  height: var(--height);
+  position: absolute;
+  left: 100%;
+  animation: autorun 32s linear infinite;
+  animation-delay: calc((32s / var(--quantity)) * (var(--position) - 1));
+}
+
+.slider .list .item img {
+  width: 100%;
+}
+
+@keyframes autorun {
+  from {
+    left: 100%;
+  }
+  to {
+    left: calc(var(--width) * -1);
+  }
+}
+
+.slider:hover .item {
+  animation-play-state: paused !important;
+  filter: grayscale(1);
+}
+
+.slider .item:hover {
+  filter: grayscale(0);
+}
+
 /* Warning for mobile devices */
 .warning-mobile {
   display: none;
-  background-color: #ff0000; /* Red background for visibility */
-  color: #ffffff; /* White text */
+  background-color: #ff0000;
+  color: var(--text-color);
   text-align: center;
   padding: 20px;
   font-size: 18px;
