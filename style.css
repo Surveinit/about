@@ -28,7 +28,7 @@ body {
   gap: 20px;
   max-width: var(--max-content-width);
   margin: 0 auto;
-  padding: 20px; 
+  padding: 20px;
 }
 
 /* Up container (clouds and content) */
@@ -38,7 +38,6 @@ body {
   align-items: center;
   justify-content: center;
 }
-
 
 /* Content section */
 .content {
@@ -181,7 +180,13 @@ body {
   .introduction {
     text-align: left;
   }
+
+  .slider .list .item {
+    animation: autorun 16s linear infinite;
+    animation-delay: calc((16s / var(--quantity)) * (var(--position) - 1));
+  }
 }
+
 /* Larger screens */
 @media (min-width: 769px) {
   .up-container {
@@ -192,4 +197,3 @@ body {
     max-width: 550px;
   }
 }
-
