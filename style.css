@@ -65,7 +65,7 @@ body {
   justify-content: center;
   gap: 15px;
   margin-top: 15px;
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   flex-wrap: wrap;
 }
 
@@ -176,29 +176,11 @@ body {
   filter: grayscale(0);
 }
 
-/* Warning for mobile devices */
-.warning-mobile {
-  display: none;
-  background-color: #ff0000;
-  color: var(--text-color);
-  text-align: center;
-  padding: 15px; /* Slightly reduced padding */
-  font-size: 16px; /* Slightly reduced font size */
-}
 
-
-/* Larger screens */
+/* Smaller screens */
 @media (min-width: 769px) {
   .up-container {
     flex-direction: row;
-  }
-
-  .cloud-left {
-    margin-top: -80px;
-  }
-
-  .cloud-right {
-    margin-bottom: -80px;
   }
 
   .introduction {
