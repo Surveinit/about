@@ -1,6 +1,7 @@
 :root {
   --background-color: #fff9f3;
   --text-color: #343433;
+  --max-content-width: 1200px; /* Added a max width for larger screens */
 
   font-family: "Bitter", serif;
   font-optical-sizing: auto;
@@ -9,130 +10,97 @@
   overflow-x: hidden;
 }
 
-/* Aligments */
-
+/* Resets and general styles */
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 body {
   background-color: var(--background-color);
-  /* overflow: hidden; */
 }
 
+/* Main layout container */
 .main-container {
   display: flex;
   flex-direction: column;
   gap: 20px;
+  max-width: var(--max-content-width);
+  margin: 0 auto;
+  padding: 20px; 
 }
 
+/* Up container (clouds and content) */
 .up-container {
   display: flex;
-  flex-direction: row;
+  flex-direction: column; /* Stack on smaller screens */
   align-items: center;
   justify-content: center;
 }
 
-/* .cloud-left { */
-/*   display: flex; */
-/*   flex-direction: column; */
-/*   justify-content: flex-end; */
-/* } */
 
-/* .cloud-right { */
-/*   display: flex; */
-/*   flex-direction: column; */
-/*   justify-content: flex-start; */
-/* } */
-
+/* Content section */
 .content {
   display: flex;
   flex-direction: column;
-}
-
-.introduction {
-  display: flex;
-  flex-direction: column;
   align-items: center;
-  margin-top: 30px;
 }
 
+/* Introduction text */
+.introduction {
+  max-width: 90%;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.introduction p {
+  font-size: 1.15rem;
+  margin: 10px 0;
+}
+
+/* Links section */
 .links {
   display: flex;
   justify-content: center;
-  gap: 10px;
+  gap: 15px;
+  margin-top: 15px;
+  font-size: 1.3rem;
+  flex-wrap: wrap;
 }
 
+.links li {
+  transition: transform 250ms ease;
+  will-change: transform;
+  list-style: none;
+}
+
+.links li:hover {
+  cursor: pointer;
+  transform: scale(1.08);
+}
+
+.links li a {
+  text-decoration: none;
+  color: var(--text-color);
+}
+
+/* Artwork section */
 .artwork {
   display: flex;
   justify-content: center;
 }
 
+.artwork img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Resume button */
 .resume-btn-container {
   display: flex;
   justify-content: center;
-  margin-top: 30px;
-}
-
-/* Sizing */
-
-.cloud-left {
-  width: 300px;
-  margin-top: -80px;
-}
-
-.cloud-right {
-  width: 350px;
-  margin-bottom: -80px;
-}
-
-.introduction {
-  max-width: 550px;
-  text-align: center;
-}
-
-.artwork > img {
-  width: 800px;
-}
-
-/* Styling */
-
-li {
-  list-style: none;
-}
-
-p {
-  font-size: 1.25rem;
-  margin: 8px;
-}
-
-.links {
-  margin-top: 18px;
-  font-size: 1.35rem;
-}
-
-li > a {
-  text-decoration: none;
-  color: var(--text-color);
-}
-
-.links > li {
-  transition: transform 250ms ease;
-  will-change: transform;
-
-  &:hover {
-    cursor: pointer;
-    transform: scale(1.08);
-  }
-}
-
-.cloud-left {
-  opacity: 40%;
-}
-
-.cloud-right {
-  opacity: 45%;
+  margin-top: 20px;
 }
 
 .resume-btn {
@@ -142,35 +110,30 @@ li > a {
   cursor: pointer;
   border: 1px solid var(--bg);
   border-radius: 4px;
-  padding: 0.8em 2em;
+  padding: 0.7em 1.5em;
   background: var(--bg);
   transition: 0.2s;
+  font-size: 1rem;
+}
 
-  &:hover {
-    transform: scale(1.1);
-  }
+.resume-btn:hover {
+  transform: scale(1.05);
+}
 
-  &:active {
-    transform: translate(0);
-  }
+.resume-btn:active {
+  transform: translate(0);
 }
 
 /* Slider */
-
 .slider {
-  --width: 80px;
-  --height: 80px;
+  --width: 60px;
+  --height: 60px;
   --quantity: 8;
 
   width: 100%;
   height: var(--height);
-
-  mask-image: linear-gradient(
-    to right,
-    transparent,
-    #000,
-    transparent
-    );
+  mask-image: linear-gradient(to right, transparent, #000, transparent);
+  margin-top: 20px;
 }
 
 .slider .list {
@@ -191,6 +154,8 @@ li > a {
 
 .slider .list .item img {
   width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
 @keyframes autorun {
@@ -217,16 +182,27 @@ li > a {
   background-color: #ff0000;
   color: var(--text-color);
   text-align: center;
-  padding: 20px;
-  font-size: 18px;
+  padding: 15px; /* Slightly reduced padding */
+  font-size: 16px; /* Slightly reduced font size */
 }
 
-@media only screen and (max-width: 768px) {
-  .warning-mobile {
-    display: block;
+
+/* Larger screens */
+@media (min-width: 769px) {
+  .up-container {
+    flex-direction: row;
   }
 
-  .main-container {
-    display: none; /* Hide other content on mobile devices */
+  .cloud-left {
+    margin-top: -80px;
+  }
+
+  .cloud-right {
+    margin-bottom: -80px;
+  }
+
+  .introduction {
+    max-width: 550px;
   }
 }
+
