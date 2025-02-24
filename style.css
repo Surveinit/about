@@ -176,8 +176,13 @@ body {
   filter: grayscale(0);
 }
 
-
-/* Smaller screens */
+/* Smaller screen */
+@media only screen and (max-width: 568px) {
+  .introduction {
+    text-align: left;
+  }
+}
+/* Larger screens */
 @media (min-width: 769px) {
   .up-container {
     flex-direction: row;
